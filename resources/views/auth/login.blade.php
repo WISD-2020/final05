@@ -1,3 +1,7 @@
+@extends('layouts.master')
+
+@section('content')
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -33,16 +37,32 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+
+                <x-jet-button class="ml-4">
+                    {{ __('Login') }}
+                </x-jet-button>
+
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
 
-                <x-jet-button class="ml-4">
-                    {{ __('Login') }}
-                </x-jet-button>
             </div>
+            <img src="images/logo5.png" width="150" height="150">
+            <div class="flex items-center justify-end mt-4">
+                <button class="btn btn-dark">
+                    <a href="{{ route('register') }}"><left>{{ __('尚未註冊點此') }} </left></a>
+                </button>
+            </div>
+
+
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+@endsection
