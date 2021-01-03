@@ -14,7 +14,11 @@ class ModifyInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('sex', 2)->after('name');
+            $table->date('birthday')->after('sex');
+            $table->string('status', 1)->after('birthday');
+            $table->string('account', 10)->after('status');
+            $table->string('telephone', 10)->after('account');
         });
     }
 
@@ -26,7 +30,11 @@ class ModifyInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('sex');
+            $table->dropColumn('birthday');
+            $table->dropColumn('status');
+            $table->dropColumn('account');
+            $table->dropColumn('telephone');
         });
     }
 }
