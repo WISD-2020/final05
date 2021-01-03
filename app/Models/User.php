@@ -29,6 +29,27 @@ class User extends Authenticatable
         'password',
     ];
 
+
+    public function treatments()
+    {
+        return $this->hasMany(Treatment::class);
+    }
+
+    public function outpatients()
+    {
+        return $this->hasMany(Outpatient::class);
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
