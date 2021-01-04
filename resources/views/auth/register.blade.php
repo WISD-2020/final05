@@ -19,6 +19,38 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="" value="{{ __('性別') }}" />
+            </div>
+
+            <div style="display: flex; justify-content: flex-start;" class="mt-4">
+                <x-radio id="male" name="sex" value="男性" checked />
+                <x-jet-label for="male" value="{{ __('男性') }}" />
+                &emsp;&emsp;
+                <x-radio id="female" name="sex" value="女性" />
+                <x-jet-label for="female" value="{{ __('女性') }}" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="birthday" value="{{ __('生日') }}" />
+                <x-jet-input id="birthday" class="" type="date" name="birthday" max="$max" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-input id="status" class="" type="hidden" name="status" value="0" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="account" value="{{ __('身分證字號') }}" />
+                <x-jet-input id="account" class="block mt-1 w-full" type="text" name="account" maxlength="10" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="telephone" value="{{ __('電話') }}" />
+                <x-jet-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="10" required />
+            </div>
+
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
