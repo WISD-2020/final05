@@ -29,7 +29,7 @@ class AdminDoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.doctors.create');
     }
 
     /**
