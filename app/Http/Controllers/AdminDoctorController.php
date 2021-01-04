@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminDoctorController extends Controller
@@ -13,7 +14,12 @@ class AdminDoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = User::where('status','=','1')->orwhere('status','=','2')->get();
+        $data = [
+            'doctors' => $doctors,
+        ];
+
+        return view('admin.doctors.show', $data);
     }
 
     /**
