@@ -19,9 +19,9 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="mt-4">
+                <x-jet-label for="account" value="{{ __('身分證字號') }}" />
+                <x-jet-input id="account" class="block mt-1 w-full" type="text" name="account" maxlength="10" required />
             </div>
 
             <div class="mt-4">
