@@ -39,7 +39,9 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        auth()->user()->announcements()->create($request->all());
+
+        return redirect()->route('doctors.announcements.index');
     }
 
     /**
