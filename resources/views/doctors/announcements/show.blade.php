@@ -12,7 +12,7 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                        <tr><td><a href="{{ route('doctors.announcements.create') }}">新增</a></td></tr>
                         @foreach($announcements as $announcement)
                             <tr>
                                 <td style="text-align: center">{{ $announcement->id }}</td>
