@@ -28,7 +28,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.announcements.create');
     }
 
     /**
