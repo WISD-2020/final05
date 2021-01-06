@@ -42,5 +42,6 @@ Route::prefix('doctors')->group(function () {
     Route::post('/announcements', [AnnouncementController::class, 'store'])->name('doctors.announcements.store');
     Route::get('/announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('doctors.announcements.edit');
     Route::patch('/announcements/{announcement}', [AnnouncementController::class, 'update'])->name('doctors.announcements.update');
+    Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('doctors.announcements.destroy');
 });
 
