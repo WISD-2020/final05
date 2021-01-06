@@ -15,7 +15,7 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doctor_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->index();
             $table->string('title', 20);
             $table->text('content');
             $table->timestamps();
