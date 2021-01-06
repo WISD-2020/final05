@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -13,7 +14,11 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        //
+        $announcements = Announcement::orderBy('created_at', 'DESC')->get();
+        $data = [
+            'announcements' => $announcements,
+        ];
+        return view('doctors.announcements.show', $data);
     }
 
     /**
@@ -23,7 +28,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.announcements.create');
     }
 
     /**
@@ -34,7 +39,9 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        auth()->user()->announcements()->create($request->all());
+
+        return redirect()->route('doctors.announcements.index');
     }
 
     /**

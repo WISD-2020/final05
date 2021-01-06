@@ -15,7 +15,7 @@ class CreateOutpatientsTable extends Migration
     {
         Schema::create('outpatients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('doctor_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->index();
             $table->string('period', 2);
             $table->timestamps();
         });

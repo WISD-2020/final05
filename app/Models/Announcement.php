@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Announcement extends Model
 {
     use HasFactory;
+    protected $table = 'announcements';
+    protected $fillable = [
+        'doctor_id',
+        'title',
+        'content',
+    ];
 
     public function user()
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDoctorController;
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,14 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('/doctors/{doctor}/edit', [AdminDoctorController::class, 'edit'])->name('admin.doctors.edit');
     Route::patch('/doctors/{doctor}', [AdminDoctorController::class, 'update'])->name('admin.doctors.update');
 });
+
+
+Route::prefix('doctors')->group(function () {
+    Route::get('/announcements', [AnnouncementController::class, 'index'])->name('doctors.announcements.index');
+    Route::get('/announcements/create', [AnnouncementController::class, 'create'])->name('doctors.announcements.create');
+    Route::post('/announcements', [AnnouncementController::class, 'store'])->name('doctors.announcements.store');
+    Route::get('/announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('doctors.announcements.edit');
+    Route::patch('/announcements/{announcement}', [AnnouncementController::class, 'update'])->name('doctors.announcements.update');
+    Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('doctors.announcements.destroy');
+});
+
