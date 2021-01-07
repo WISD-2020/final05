@@ -79,7 +79,9 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $announcements = Announcement::find($id);
+        $announcements->update($request->all());
+        return redirect()->route('doctors.announcements.index');
     }
 
     /**
