@@ -63,7 +63,11 @@ class AnnouncementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $announcements = Announcement::find($id);
+        $data = [
+            'announcements' => $announcements,
+        ];
+        return view('doctors.announcements.edit', $data);
     }
 
     /**
