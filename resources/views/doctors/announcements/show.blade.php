@@ -19,9 +19,13 @@
                                 <td>{{ $announcement->title }}</td>
                                 <td>{{ $announcement->content }}</td>
                                 <td>
-                                    <a href="{{ route('doctors.announcements.edit', $announcement->id) }}">編輯</a>
+                                    <a href="{{ route('doctors.announcements.edit', $announcement->id) }}"><button class="btn btn-sm btn-primary" type="submit">編輯</button></a>
                                     /
-                                    <a href="#">刪除</a>
+                                    <form action="{{ route('doctors.announcements.destroy', $announcement->id) }}" method="POST" style="display:inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
