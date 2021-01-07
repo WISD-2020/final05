@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -12,11 +13,16 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $announcements = Announcement::orderBy('created_at', 'DESC')->get();
+        $users = User::Get();
+        $auth_id=auth()->user()->id;
+        //$announcement = Announcement::where('user_id', $request->user()->id)->get();
         $data = [
             'announcements' => $announcements,
+            'users' => $users,
+            'auth_id' => $auth_id,
         ];
         return view('doctors.announcements.show', $data);
     }
