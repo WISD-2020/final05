@@ -2,6 +2,11 @@
 
 @section('content')
 
+<?php
+    use Carbon\Carbon;
+    $max=Carbon::now('Asia/Taipei')->toDateString()
+?>
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -32,7 +37,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="birthday" value="{{ __('生日') }}" />
-                <x-jet-input id="birthday" class="" type="date" name="birthday" max="$max" required />
+                <x-jet-input id="birthday" class="" type="date" name="birthday" max="{{$max}}" required />
             </div>
 
             <div class="mt-4">
