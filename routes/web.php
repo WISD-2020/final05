@@ -27,7 +27,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::prefix('admin')->group(function () {
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
     Route::get('/doctors', [AdminDoctorController::class, 'index'])->name('admin.doctors.index');
     Route::get('/doctors/create', [AdminDoctorController::class, 'create'])->name('admin.doctors.create');
     Route::post('/doctors', [AdminDoctorController::class, 'store'])->name('admin.doctors.store');
