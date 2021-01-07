@@ -92,6 +92,7 @@ class AnnouncementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Announcement::destroy($id);
+        return redirect()->route('doctors.announcements.index');
     }
 }
