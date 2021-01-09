@@ -26,8 +26,6 @@ class OutpatientController extends Controller
             ->get();
 
 
-
-
         $auth_id=auth()->user()->id;
         //$announcement = Announcement::where('user_id', $request->user()->id)->get();
         $data = [
@@ -46,7 +44,12 @@ class OutpatientController extends Controller
      */
     public function create()
     {
-        return view('doctors.outpatients.create');
+        $last=Outpatient::orderBy('id', 'DESC')->first();
+        $data=[
+            'last' => $last,
+        ];
+
+        return view('doctors.outpatients.create', $data);
     }
 
     /**
@@ -57,7 +60,28 @@ class OutpatientController extends Controller
      */
     public function store(Request $request)
     {
-        Outpatient::create($request->all());
+        $a=[
+            'user_id' => $request->user_id,
+            'period' => $request->morning,
+            'date' => $request->date,
+        ];
+
+        $b=[
+            'user_id' => $request->user_id,
+            'period' => $request->afternoon,
+            'date' => $request->date,
+        ];
+
+        $c=[
+            'user_id' => $request->user_id,
+            'period' => $request->night,
+            'date' => $request->date,
+        ];
+
+        auth()->user()->outpatients()->create($a);
+        auth()->user()->outpatients()->create($b);
+        auth()->user()->outpatients()->create($c);
+
         return redirect()->route('doctors.outpatients.create');
 
     }
@@ -79,9 +103,27 @@ class OutpatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $outpatients = Outpatient::Get();
+        $users = User::Get();
+
+        $tests = DB::table('outpatients')
+            ->join('users', 'outpatients.user_id', '=', 'users.id')
+            ->select('users.name', 'outpatients.id', 'outpatients.user_id')
+            ->orderBy('outpatients.id', 'asc')
+            ->get();
+
+        $auth_id=auth()->user()->id;
+        //$announcement = Announcement::where('user_id', $request->user()->id)->get();
+        $data = [
+            'outpatients' => $outpatients,
+            'users' => $users,
+            'auth_id' => $auth_id,
+            'tests' => $tests,
+        ];
+
+        return view('doctors.outpatients.edit', $data);
     }
 
     /**
