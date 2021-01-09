@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outpatient;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OutpatientController extends Controller
 {
@@ -11,9 +14,29 @@ class OutpatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $outpatients = Outpatient::get();
+        $users = User::Get();
+
+        $tests = DB::table('outpatients')
+            ->join('users', 'outpatients.user_id', '=', 'users.id')
+            ->select('users.name', 'outpatients.id')
+            ->orderBy('outpatients.id', 'asc')
+            ->get();
+
+
+
+
+        $auth_id=auth()->user()->id;
+        //$announcement = Announcement::where('user_id', $request->user()->id)->get();
+        $data = [
+            'outpatients' => $outpatients,
+            'users' => $users,
+            'auth_id' => $auth_id,
+            'tests' => $tests,
+        ];
+        return view('doctors.outpatients.show', $data);
     }
 
     /**
@@ -23,7 +46,7 @@ class OutpatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.outpatients.create');
     }
 
     /**
@@ -34,7 +57,9 @@ class OutpatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Outpatient::create($request->all());
+        return redirect()->route('doctors.outpatients.create');
+
     }
 
     /**
@@ -43,9 +68,9 @@ class OutpatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+       //
     }
 
     /**
