@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\OutpatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,9 +51,9 @@ Route::prefix('doctors')->group(function () {
 
 
 Route::prefix('doctors')->group(function () {
-    Route::get('/outpatients', [\App\Http\Controllers\OutpatientController::class, 'index'])->name('doctors.outpatients.index');
-    Route::get('/outpatients/create', [\App\Http\Controllers\OutpatientController::class, 'create'])->name('doctors.outpatients.create');
-    Route::post('outpatients', [\App\Http\Controllers\OutpatientController::class, 'store'])->name('doctors.outpatients.store');
-    Route::get('/outpatients/{outpatient}/edit', [AnnouncementController::class, 'edit'])->name('doctors.outpatients.edit');
-    Route::patch('/outpatients/{outpatient}', [AnnouncementController::class, 'update'])->name('doctors.outpatients.update');
+    Route::get('/outpatients', [OutpatientController::class, 'index'])->name('doctors.outpatients.index');
+    Route::get('/outpatients/create', [OutpatientController::class, 'create'])->name('doctors.outpatients.create');
+    Route::post('outpatients', [OutpatientController::class, 'store'])->name('doctors.outpatients.store');
+    Route::get('/outpatients/edit', [OutpatientController::class, 'edit'])->name('doctors.outpatients.edit');
+    Route::patch('/outpatients', [OutpatientController::class, 'update'])->name('doctors.outpatients.update');
 });
