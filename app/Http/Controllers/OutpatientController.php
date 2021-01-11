@@ -135,7 +135,13 @@ class OutpatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        for($i=0;$i<21;$i++) {
+            $a[$i] = $request->input('name'.$i);
+            $b[$i] = DB::table('users')->where('name', '=', $a[$i])->value('id');
+            DB::table('outpatients')->where('id', '=', $i+1)->update(['user_id' => $b[$i]]);
+        }
+
+        return redirect()->route('doctors.outpatients.index');
     }
 
     /**
