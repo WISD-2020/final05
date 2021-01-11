@@ -16,7 +16,7 @@ for($i=0; $i<7; $i++){
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('門診表') }}
+            {{ __('修改門診表') }}
         </h2>
     </x-slot>
 
