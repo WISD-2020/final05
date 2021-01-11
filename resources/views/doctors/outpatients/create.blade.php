@@ -1,79 +1,107 @@
-{{--<?php--}}
-{{--use Carbon\Carbon;--}}
-{{--$min = Carbon::now('Asia/Taipei')->toDateString();--}}
-{{--$max = Carbon::now('Asia/Taipei')->addDays(7)->toDateString();--}}
-{{--?>--}}
-
-{{--<form action="{{ route('doctors.outpatients.store') }}" method="POST" role="form">--}}
-{{--    @method('POST')--}}
-{{--    @csrf--}}
-
-{{--    <input type="date" id="date" name="date" class="form-control" rows="10" min="{{ $min }}" max="{{ $max }}">--}}
-
-
-{{--    <div class="form-group">--}}
-{{--        <label for="content">時段：</label>--}}
-{{--        <select name="period">--}}
-{{--            <option value="上午">上午</option>--}}
-{{--            <option value="下午">下午</option>--}}
-{{--            <option value="晚上">晚上</option>--}}
-{{--        </select>--}}
-{{--    </div>--}}
-
-
-{{--    <div class="text-right">--}}
-{{--        <button type="submit" class="btn btn-success">新增</button>--}}
-{{--    </div>--}}
-
-{{--    <p>&nbsp;</p>--}}
-{{--    <p>&nbsp;</p>--}}
-{{--    <p>&nbsp;</p>--}}
-
-{{--</form>--}}
-
 {{$date=$last->date}}
 <?php
 use Carbon\Carbon;
 
-$year=substr($date, 0, 4);
-$month=substr($date, 5, 2);
-$day=substr($date, 8, 2);
+$year = substr($date, 0, 4);
+$month = substr($date, 5, 2);
+$day = substr($date, 8, 2);
 
-$min = Carbon::createFromDate($year, $month, $day+1, 'Asia/Taipei')->toDateString();
+$min = Carbon::createFromDate($year, $month, $day + 1, 'Asia/Taipei')->toDateString();
 $max = Carbon::createFromDate($year, $month, $day, 'Asia/Taipei')->addDays(7)->toDateString();
 ?>
-{{--{{$last->date}}--}}
-<form method="POST" action="{{ route('doctors.outpatients.store') }}">
-    @method('POST')
-    @csrf
 
-    <div class="mt-4">
-        <x-jet-label for="date" value="{{ __('日期') }}" />
-        <input type="date" id="date" name="date" class="block mt-1 w-full" rows="10" min="{{ $min }}" max="{{ $max }}">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('新增門診表') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <form method="POST" action="{{ route('doctors.outpatients.store') }}">
+            @method('POST')
+            @csrf
+
+            <!-- This example requires Tailwind CSS v2.0+ -->
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+                                                        日期
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">
+                                                <input type="date" id="date" name="date" class="block mt-1 w-full"
+                                                       rows="10" min="{{ $min }}" max="{{ $max }}">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900" hidden="ture">
+                                                <input type="text" id="morning" name="morning" class="block mt-1 w-full"
+                                                       value="上午" hidden>
+
+                                                <input type="text" id="afternoon" name="afternoon"
+                                                       class="block mt-1 w-full" value="下午" hidden>
+
+                                                <input type="text" id="night" name="night" class="block mt-1 w-full"
+                                                       value="晚上" hidden>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- More rows... -->
+                                    </tbody>
+                                </table>
+
+                                <div class="flex items-center justify-end mt-4 px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="{{ route('doctors.outpatients.index') }}"><input type="button" value="返回" class="text-indigo-600 hover:text-indigo-900 text-2xl"></a>
+                                    &emsp; | &emsp;
+                                    <button type="submit" class="text-indigo-600 hover:text-indigo-900 text-2xl">送出</button>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div>
-{{--        <x-jet-label for="period" value="{{ __('時段') }}" />--}}
-{{--        <x-jet-input id="period" class="block mt-1 w-full" type="text" name="period" required />--}}
-{{--        <select name="period" id="period" class="block mt-1 w-full">--}}
-{{--            <option value="上午">上午</option>--}}
-{{--            <option value="下午">下午</option>--}}
-{{--            <option value="晚上">晚上</option>--}}
-{{--        </select>--}}
-
-        <input type="text" id="morning" name="morning" class="block mt-1 w-full" value="上午" hidden>
-
-        <input type="text" id="afternoon" name="afternoon" class="block mt-1 w-full" value="下午" hidden>
-
-        <input type="text" id="night" name="night" class="block mt-1 w-full" value="晚上" hidden>
-
-    </div>
-
-
-
-    <div class="flex items-center justify-end mt-4">
-        <x-jet-button class="ml-4">
-            {{ __('新增') }}
-        </x-jet-button>
-    </div>
-</form>
+</x-app-layout>
