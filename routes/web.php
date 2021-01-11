@@ -55,5 +55,5 @@ Route::prefix('doctors')->group(function () {
     Route::get('/outpatients/create', [OutpatientController::class, 'create'])->name('doctors.outpatients.create');
     Route::post('outpatients', [OutpatientController::class, 'store'])->name('doctors.outpatients.store');
     Route::get('/outpatients/edit', [OutpatientController::class, 'edit'])->name('doctors.outpatients.edit');
-    Route::patch('/outpatients', [OutpatientController::class, 'update'])->name('doctors.outpatients.update');
+    Route::patch('/outpatients/{outpatient}', [OutpatientController::class, 'update'])->name('doctors.outpatients.update');
 });
