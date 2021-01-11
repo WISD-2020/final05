@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminDoctorController extends Controller
 {
+    use PasswordValidationRules;
+
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +45,29 @@ class AdminDoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'sex' => ['required', 'string', 'max:2'],
+            'birthday' => ['required', 'date'],
+            'status' => ['required', 'string', 'max:1'],
+            'account' => ['required', 'string', 'max:10'],
+            'telephone' => ['required', 'string', 'max:10'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules(),
+        ])->validate();
+
+        User::create([
+            'name' => $request['name'],
+            'sex' => $request['sex'],
+            'birthday' => $request['birthday'],
+            'status' => $request['status'],
+            'account' => $request['account'],
+            'telephone' => $request['telephone'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return redirect()->route('admin.doctors.index');
     }
 
     /**
