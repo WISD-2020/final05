@@ -4,7 +4,7 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('admin.doctors.store') }}">
             @csrf
 
             <div>
