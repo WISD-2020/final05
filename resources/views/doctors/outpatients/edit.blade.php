@@ -20,9 +20,9 @@ for($i=0; $i<7; $i++){
 }
 
 ?>
+{{$tests[0]->user_id}}
 
-
-<form action="{{ route('doctors.outpatients.update',$a,$b,$c) }}" method="POST" align="center" role="form">
+<form action="{{ route('doctors.outpatients.update', $tests[0]->id) }}" method="POST" align="center" role="form">
     @method('PATCH')
     @csrf
 
@@ -46,10 +46,10 @@ for($i=0; $i<7; $i++){
 
                     <td>
                         @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                         @else
-                            <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                            <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                         @endif
@@ -66,10 +66,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -84,10 +84,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -102,10 +102,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -120,10 +120,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -138,10 +138,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -156,10 +156,10 @@ for($i=0; $i<7; $i++){
 
                 <td>
                     @if($tests[$i]->user_id == $auth_id)
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}">
 
                     @else
-                        <input type="text" name="name" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" disabled>
+                        <input type="text" name="name{{$i}}" style="border-style:none" class="form-control" placeholder="請輸入姓名" value="{{ old('name', $tests[$i]->name) }}" readonly>
 
 
                     @endif
@@ -169,37 +169,11 @@ for($i=0; $i<7; $i++){
 
             @endfor</tr></table>
 
+        <div class="text-right">
+            <button type="submit" class="btn btn-success">更新</button>
+        </div>
+
 </form>
-
-
-
-
-{{--<table class="table table-striped task-table">--}}
-{{--    <thead>--}}
-{{--    <th>任務</th>--}}
-{{--    <th>&nbsp;</th>--}}
-{{--    </thead>--}}
-{{--    <tbody>--}}
-{{--    @foreach ($a as $b)--}}
-{{--        <tr>--}}
-{{--            <td class="table-text"><div>{{ $b->date }}</div></td>--}}
-
-{{--            <!-- 任務刪除按鈕 -->--}}
-{{--            <td class="table-text"><div>{{ $b->period }}</div></td>--}}
-{{--        </tr>--}}
-{{--    @endforeach--}}
-{{--    </tbody>--}}
-{{--</table>--}}
-
-{{--@foreach ($aa as $aaa)--}}
-{{--    {{ $aaa->name }}--}}
-{{--@endforeach--}}
-
-{{--@foreach ($bb as $bbb)--}}
-{{--    {{ $bbb->date }}--}}
-{{--@endforeach--}}
-
-
 
 </body>
 </html>
