@@ -17,9 +17,9 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->foreignId('outpatient_id')->nullable()->index();
             $table->foreignId('user_id')->nullable()->index();
+            $table->date('date');
             $table->string('period', 2);
             $table->string('status', 1);
-            $table->text('history');
             $table->timestamps();
         });
     }
