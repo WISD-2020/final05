@@ -22,7 +22,7 @@ class LoginResponse implements LoginResponseContract
         if ($status=="2")
             return "<script language='JavaScript'>alert('此帳號已停用！！');location.href='/';</script>";
         elseif ($status=="1")
-            return redirect()->route('doctors.treatments.index');
+            return redirect()->route('doctors.outpatients.index');
         elseif ($status=="3")
             return redirect()->route('admin.doctors.index');
         elseif ($status=="0")
