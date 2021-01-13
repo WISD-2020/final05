@@ -74,4 +74,5 @@ Route::prefix('/patients/appointments')->group(function () {
     Route::post('/check/{appointment}', [AppointmentController::class, 'store'])->name('patients.appointments.store');
     Route::get('/edit/{appointment}', [AppointmentController::class, 'edit'])->name('patients.appointments.edit');
     Route::patch('/{appointment}', [AppointmentController::class, 'update'])->name('patients.appointments.update');
+    Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('patients.appointments.destroy');
 });
