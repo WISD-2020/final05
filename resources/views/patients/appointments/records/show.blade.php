@@ -80,7 +80,11 @@
 
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <a href="{{ route('patients.appointments.edit', $appointment->id) }}"><button class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" type="submit">編輯</button></a>
+                                            <button class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" type="submit"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">取消掛號</button></a>
+                                            <form id="logout-form" action="{{ route('patients.appointments.destroy', $appointment->id) }}" method="POST" style="display: none;">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
