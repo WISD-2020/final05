@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use App\Models\Appointment;
 use App\Models\Outpatient;
 use App\Models\User;
@@ -131,6 +132,7 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Appointment::destroy($id);
+        return redirect()->route('patients.appointments.record');
     }
 }
