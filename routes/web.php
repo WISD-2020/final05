@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminDoctorController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\OutpatientController;
+use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/doctors', [AdminDoctorController::class, 'index'])->name('admin.doctors.index');
     Route::get('/doctors/create', [AdminDoctorController::class, 'create'])->name('admin.doctors.create');
     Route::post('/doctors', [AdminDoctorController::class, 'store'])->name('admin.doctors.store');
@@ -48,12 +51,27 @@ Route::prefix('doctors')->group(function () {
 });
 
 
-
-
 Route::prefix('doctors')->group(function () {
     Route::get('/outpatients', [OutpatientController::class, 'index'])->name('doctors.outpatients.index');
     Route::get('/outpatients/create', [OutpatientController::class, 'create'])->name('doctors.outpatients.create');
     Route::post('outpatients', [OutpatientController::class, 'store'])->name('doctors.outpatients.store');
     Route::get('/outpatients/edit', [OutpatientController::class, 'edit'])->name('doctors.outpatients.edit');
     Route::patch('/outpatients/{outpatient}', [OutpatientController::class, 'update'])->name('doctors.outpatients.update');
+});
+
+Route::prefix('doctors')->group(function () {
+    Route::get('/treatments', [TreatmentController::class, 'index'])->name('doctors.treatments.index');
+    Route::get('/treatments/create', [TreatmentController::class, 'create'])->name('doctors.treatments.create');
+    Route::post('treatments', [TreatmentController::class, 'store'])->name('doctors.treatments.store');
+    Route::get('/treatments/edit', [TreatmentController::class, 'edit'])->name('doctors.treatments.edit');
+    Route::patch('/treatments/{user_id}', [TreatmentController::class, 'update'])->name('doctors.treatments.update');
+});
+
+
+Route::prefix('/patients/appointments')->group(function () {
+    Route::get('/records', [AppointmentController::class, 'index'])->name('patients.appointments.record');
+    Route::get('/create', [AppointmentController::class, 'create'])->name('patients.appointments.create');
+    Route::post('/check/{appointment}', [AppointmentController::class, 'store'])->name('patients.appointments.store');
+    Route::get('/edit/{appointment}', [AppointmentController::class, 'edit'])->name('patients.appointments.edit');
+    Route::patch('/{appointment}', [AppointmentController::class, 'update'])->name('patients.appointments.update');
 });
