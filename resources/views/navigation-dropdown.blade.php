@@ -11,6 +11,42 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if(auth()->user()->status =="1")
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('doctors.treatments.index') }}" :active="request()->routeIs('doctors.treatments.index')">
+                            {{ __('診察') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('doctors.announcements.index') }}" :active="request()->routeIs('doctors.announcements.index')">
+                            {{ __('公告') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('doctors.outpatients.index') }}" :active="request()->routeIs('doctors.outpatients.index')">
+                            {{ __('門診表') }}
+                        </x-jet-nav-link>
+                    </div>
+                @elseif(auth()->user()->status =="0")
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-jet-nav-link href="{{ route('patients.appointments.create') }}" :active="request()->routeIs('patients.appointments.create')">
+                                {{ __('掛號') }}
+                            </x-jet-nav-link>
+
+                            <x-jet-nav-link href="{{ route('patients.appointments.record') }}" :active="request()->routeIs('patients.appointments.record')">
+                                {{ __('查詢/取消掛號') }}
+                            </x-jet-nav-link>
+                        </div>
+                @elseif(auth()->user()->status =="3")
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('首頁') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('admin.doctors.index') }}" :active="request()->routeIs('admin.doctors.index')">
+                            {{ __('新增醫師') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -117,7 +153,6 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
-
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
