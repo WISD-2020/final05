@@ -10,6 +10,15 @@ class Appointment extends Model
     use HasFactory;
     protected $table = 'appointments';
 
+    protected $fillable=[
+        'outpatient_id',
+        'user_id',
+        'date',
+        'period',
+        'status',
+    ];
+
+
     public function outpatient()
     {
         return $this->belongsTo(Outpatient::class);
