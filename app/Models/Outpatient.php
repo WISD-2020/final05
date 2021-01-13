@@ -11,6 +11,7 @@ class Outpatient extends Model
     protected $table = 'outpatients';
 
     protected $fillable=[
+        'user_id',
         'date',
         'period'
     ];
