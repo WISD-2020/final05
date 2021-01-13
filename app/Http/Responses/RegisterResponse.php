@@ -18,7 +18,9 @@ class RegisterResponse implements RegisterResponseContract
         if ($status=="1")
             return redirect()->route('admin.doctors.index');
         elseif ($status=="0")
-            return redirect()->route('dashboard');
+            return redirect()->route('patients.appointments.create');
+        elseif ($status=="3")
+            return redirect()->route('admin.doctors.index');
 
 //        return $request->wantsJson()
 //            ? new JsonResponse('', 201)
