@@ -26,7 +26,7 @@ class TreatmentController extends Controller
             ->join('users', 'appointments.user_id', '=', 'users.id')
             ->select('users.name','appointments.user_id')
             ->get();
-dd($patient_name[]->user_id);
+
         $data = [
             'outpatients'=>$outpatients,
             'users' => $users,
