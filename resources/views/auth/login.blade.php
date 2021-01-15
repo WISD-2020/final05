@@ -53,7 +53,6 @@
                 @endif
 
             </div>
-            <img src="images/logo5.png" width="150" height="150">
             <div class="flex items-center justify-end mt-4">
                 <button class="btn btn-dark">
                     <a href="{{ route('register') }}"><left>{{ __('尚未註冊點此') }} </left></a>

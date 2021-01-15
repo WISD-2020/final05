@@ -1,3 +1,3 @@
 <a href="/">
-    {!! file_get_contents('images/logo1.svg') !!}
+    {!! file_get_contents('images/ncut.svg') !!}
 </a>

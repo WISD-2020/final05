@@ -108,9 +108,9 @@
                                 @if (Route::has('login'))
                                     @auth
                                         @if (auth()->user()->status=="0")
-                                            <li><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                            <li><a class="nav-link" href="{{ route('patients.appointments.create') }}">Dashboard</a></li>
                                         @elseif (auth()->user()->status=="1")
-                                            <li><a class="nav-link" href="{{ url('/doctors/edit') }}">醫師</a></li>
+                                            <li><a class="nav-link" href="{{ route('doctors.outpatients.index') }}">醫師</a></li>
                                         @elseif (auth()->user()->status=="3")
                                             <li><a class="nav-link" href="{{ url('/admin/index') }}">管理員</a></li>
                                         @endif
