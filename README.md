@@ -93,7 +93,7 @@
       });
       
 * 查詢掛號頁面 [3A732027白晏彰](https://github.com/3a732027) 
-      * Route::prefix('/patients/appointments')->group(function () {
+     * Route::prefix('/patients/appointments')->group(function () {
            Route::get('/records', [AppointmentController::class, 'index'])->name('patients.appointments.record'); //查詢掛號
            Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('patients.appointments.destroy'); //取消掛號
         });
@@ -103,12 +103,12 @@
 醫師
 -------   
 * 診察頁面 [3A732050林駿綦](https://github.com/3a732050)
-      * Route::prefix('doctors')->group(function () {
+     * Route::prefix('doctors')->group(function () {
            Route::get('/treatments', [TreatmentController::class, 'index'])->name('doctors.treatments.index');
         });
       
 * 公告頁面 [3A732027白晏彰](https://github.com/3a732027)
-       * Route::prefix('doctors')->group(function () {
+     * Route::prefix('doctors')->group(function () {
              Route::get('/announcements', [AnnouncementController::class, 'index'])->name('doctors.announcements.index'); //公告頁面
              Route::get('/announcements/create', [AnnouncementController::class, 'create'])->name('doctors.announcements.create'); //新增公告頁面
              Route::post('/announcements', [AnnouncementController::class, 'store'])->name('doctors.announcements.store'); //儲存公告
@@ -118,7 +118,7 @@
          });
       
 * 門診表頁面 [3A732027白晏彰](https://github.com/3a732027) [3A732050林駿綦](https://github.com/3a732050)
-      * Route::prefix('doctors')->group(function () {
+     * Route::prefix('doctors')->group(function () {
             Route::get('/outpatients', [OutpatientController::class, 'index'])->name('doctors.outpatients.index'); //門診表頁面
             Route::get('/outpatients/create', [OutpatientController::class, 'create'])->name('doctors.outpatients.create'); //新增門診表頁面
             Route::post('outpatients', [OutpatientController::class, 'store'])->name('doctors.outpatients.store'); //儲存門診表
@@ -129,7 +129,7 @@
 管理員
 -------        
 * 管理員頁面 [3A732050林駿綦](https://github.com/3a732050) 
-      * Route::prefix('admin')->group(function () {
+     * Route::prefix('admin')->group(function () {
            Route::get('/doctors', [AdminDoctorController::class, 'index'])->name('admin.doctors.index'); //醫師頁面
            Route::get('/doctors/create', [AdminDoctorController::class, 'create'])->name('admin.doctors.create'); //新增醫師頁面
            Route::post('/doctors', [AdminDoctorController::class, 'store'])->name('admin.doctors.store'); //儲存醫師
